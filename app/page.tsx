@@ -1,4 +1,5 @@
 import Link from "next/link";
+import React from "react";
 import { ShieldCheck, BarChart3, Map, ArrowRight, ArrowBigRight, ArrowUpRight, ArrowUpCircle, ArrowUpDown, ArrowUpFromDot, ArrowUpRightSquare, ClockArrowUpIcon } from "lucide-react";
 
 export default function LandingPage() {
@@ -53,7 +54,7 @@ export default function LandingPage() {
   );
 }
 
-function FeatureCard({ icon, title, desc }) {
+function FeatureCard({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
   return (
     <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
       <div className="mb-4 bg-slate-50 w-fit p-3 rounded-xl">{icon}</div>
