@@ -68,7 +68,7 @@ export default function DashboardPage() {
     // Kita tidak men-set data null agar transisi lebih mulus saat geser slider/ganti tahun
     try {
       const res = await axios.get(
-        `https://danielkevin-dmosai-backend.hf.space/analyze/${year}?eps=${params.eps}&min_samples=${params.min_samples}`
+        `https://danielkevin-dmosai-backend.hf.space/api/analyze/${year}?eps=${params.eps}&min_samples=${params.min_samples}`
       );
       
       const labeledData = mapClustersToLabels(res.data.clustering_result);
