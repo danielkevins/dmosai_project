@@ -54,8 +54,8 @@ export default function PrediksiPage() {
               onClick={() => setPeriod(m)}
               className={`px-6 py-3 rounded-lg font-bold transition-all border-2 
                 ${period === m 
-                  ? "bg-blue-500 border-blue-500 text-white shadow-lg shadow-purple-200" 
-                  : "bg-white border-slate-200 text-slate-600 hover:border-purple-300 hover:text-purple-600"
+                  ? "bg-blue-500 border-blue-500 text-white shadow-lg shadow-blue-200" 
+                  : "bg-white border-slate-200 text-slate-600 hover:border-blue-300 hover:text-blue-600"
                 }`}
             >
               {m} Bulan ke depan
