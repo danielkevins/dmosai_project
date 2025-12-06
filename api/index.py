@@ -5,7 +5,6 @@ import numpy as np
 from sklearn.cluster import DBSCAN
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
-from statsmodels.tsa.statespace.sarimax import SARIMAX
 from pandas.tseries.offsets import DateOffset
 import datetime
 import os # Tambahan module OS
@@ -164,7 +163,7 @@ def get_historical_series():
 
 # --- ENDPOINT PREDIKSI ---
 @app.get("/api/predict/{months}")
-async def predict_sarima(months: int):
+async def predict_simple(months: int):
     try:
         # 1. Ambil Data Historis
         df_ts = get_historical_series()
@@ -172,54 +171,77 @@ async def predict_sarima(months: int):
         if df_ts.empty:
              raise HTTPException(status_code=404, detail="Data historis tidak ditemukan.")
 
-        # 2. Setup Model SARIMA
-        # Order=(1,1,1) dan Seasonal=(1,1,1,12) adalah parameter standar untuk data bulanan
-        # Dalam implementasi Fuzzy SARIMA asli, parameter ini di-tuning menggunakan logika fuzzy.
-        model = SARIMAX(df_ts['value'], 
-                        order=(1, 1, 1), 
-                        seasonal_order=(1, 1, 1, 12),
-                        enforce_stationarity=False,
-                        enforce_invertibility=False)
+        # 2. LOGIKA PREDIKSI SEDERHANA (Moving Average & Trend)
+        # Menggantikan SARIMA agar hemat memori
         
-        model_fit = model.fit(disp=False)
+        # Ambil data value sebagai list
+        values = df_ts['value'].tolist()
+        last_date = df_ts.index[-1]
         
-        # 3. Lakukan Forecasting
-        forecast_result = model_fit.get_forecast(steps=months)
-        forecast_values = forecast_result.predicted_mean
-        conf_int = forecast_result.conf_int() # Interval kepercayaan (batas atas/bawah)
+        # Hitung rata-rata pertumbuhan (trend) dari 6 bulan terakhir
+        if len(values) > 6:
+            recent_growth = []
+            for i in range(1, 7):
+                if values[-i-1] > 0:
+                    growth = (values[-i] - values[-i-1]) / values[-i-1]
+                    recent_growth.append(growth)
+            avg_growth = np.mean(recent_growth) if recent_growth else 0
+        else:
+            avg_growth = 0
 
-        # 4. Format Output untuk Frontend
+        # Batasi pertumbuhan agar tidak ekstrem (misal max 20% naik/turun)
+        avg_growth = np.clip(avg_growth, -0.2, 0.2)
+
+        # Lakukan Forecasting
+        future_predictions = []
+        current_val = values[-1]
+        
+        for i in range(1, months + 1):
+            # Rumus: Nilai bulan depan = Nilai sekarang * (1 + rata-rata pertumbuhan)
+            next_val = current_val * (1 + avg_growth)
+            
+            # Tambahkan sedikit variasi random kecil agar grafik tidak lurus kaku (opsional)
+            noise = np.random.normal(0, current_val * 0.05) 
+            next_val += noise
+            
+            # Pastikan tidak negatif
+            next_val = max(0, int(next_val))
+            
+            # Update untuk iterasi berikutnya
+            current_val = next_val
+            
+            # Hitung tanggal bulan depan
+            next_date = last_date + pd.DateOffset(months=i)
+            
+            # Rentang keyakinan (Confidence Interval) simulasi sederhana
+            lower_bound = max(0, int(next_val * 0.8))
+            upper_bound = int(next_val * 1.2)
+
+            future_predictions.append({
+                "date": next_date.strftime("%Y-%m"),
+                "actual": None,
+                "predicted": next_val,
+                "lower": lower_bound,
+                "upper": upper_bound
+            })
+
+        # 3. Format Output
         history = []
         for date, row in df_ts.iterrows():
             history.append({
-                "date": date.strftime("%Y-%m"), # Format: 2023-01
+                "date": date.strftime("%Y-%m"),
                 "actual": int(row['value']),
                 "predicted": None,
                 "lower": None,
                 "upper": None
             })
             
-        future = []
-        for date, val in forecast_values.items():
-            # Cari batas atas/bawah untuk tanggal ini
-            lower = conf_int.loc[date].iloc[0]
-            upper = conf_int.loc[date].iloc[1]
-            
-            future.append({
-                "date": date.strftime("%Y-%m"),
-                "actual": None,
-                "predicted": int(val) if val > 0 else 0, # Cegah prediksi negatif
-                "lower": int(lower) if lower > 0 else 0,
-                "upper": int(upper)
-            })
-            
-        # Gabungkan data: History dulu, baru Future
-        combined_data = history + future
+        combined_data = history + future_predictions
         
         return {
             "period": months,
             "data": combined_data,
-            "model": "SARIMA (Seasonal ARIMA)",
+            "model": "Trend-Based Moving Average (Lightweight)",
             "last_date": history[-1]['date']
         }
 
