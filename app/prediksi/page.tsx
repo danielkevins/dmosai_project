@@ -14,7 +14,7 @@ export default function PrediksiPage() {
   const fetchPrediction = async (months: number) => {
     setLoading(true);
     try {
-      const res = await axios.get(`/api/predict/${months}`);
+      const res = await axios.get(`https://danielkevin-dmosai-backend.hf.space/predict/${months}`);
       setData(res.data);
     } catch (error) {
       console.error(error);

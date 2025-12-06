@@ -28,7 +28,7 @@ export default function DataPage() {
     setLoading(true);
     try {
       const res = await axios.get(
-        `/api/analyze/${year}?eps=3.0&min_samples=3`
+        `https://danielkevin-dmosai-backend.hf.space/analyze/${year}?eps=3.0&min_samples=3`
       );
       const labeledData = mapClustersToLabels(res.data.clustering_result);
       setRawData(labeledData);
