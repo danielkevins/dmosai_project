@@ -54,7 +54,7 @@ export default function PrediksiPage() {
               onClick={() => setPeriod(m)}
               className={`px-6 py-3 rounded-lg font-bold transition-all border-2 
                 ${period === m 
-                  ? "bg-purple-600 border-purple-600 text-white shadow-lg shadow-purple-200" 
+                  ? "bg-blue-500 border-blue-500 text-white shadow-lg shadow-purple-200" 
                   : "bg-white border-slate-200 text-slate-600 hover:border-purple-300 hover:text-purple-600"
                 }`}
             >
@@ -106,7 +106,7 @@ export default function PrediksiPage() {
                   <Line type="monotone" dataKey="actual" stroke="#2563eb" strokeWidth={3} dot={{r:3}} name="Data Aktual" />
                   
                   {/* Garis Prediksi (Putus-putus) */}
-                  <Line type="monotone" dataKey="predicted" stroke="#2563eb" strokeWidth={3} strokeDasharray="5 5" dot={{r:4, fill:'#2563eb'}} name="Prediksi AI" />
+                  <Line type="monotone" dataKey="predicted" stroke="#994aeeff" strokeWidth={3} strokeDasharray="5 5" dot={{r:4, fill:'#994aeeff'}} name="Prediksi AI" />
                 </ComposedChart>
               </ResponsiveContainer>
             </div>
