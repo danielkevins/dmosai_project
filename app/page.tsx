@@ -1,65 +1,64 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ShieldCheck, BarChart3, Map, ArrowRight, ArrowBigRight, ArrowUpRight, ArrowUpCircle, ArrowUpDown, ArrowUpFromDot, ArrowUpRightSquare, ClockArrowUpIcon } from "lucide-react";
 
-export default function Home() {
+export default function LandingPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="flex pt-7 flex-col items-center justify-center min-h-[90vh] bg-gradient-to-b from-blue-50 to-white px-6">
+      
+      {/* Hero Section */}
+      <div className="text-center max-w-3xl space-y-6 animate-fade-in-up">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold mb-4">
+          <span className="relative flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+          </span>
+          Sistem Informasi Cerdas 2025
+        </div>
+        
+        <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight">
+          Dashboard Sebaran Kasus DBD <span className="text-blue-600">Kota Semarang</span>
+        </h1>
+        
+        <p className="text-lg text-slate-600 leading-relaxed">
+          Pantau penyebaran Demam Berdarah Dengue (DBD) di Semarang menggunakan algoritma 
+          <strong> DBSCAN</strong>. Kelompokkan wilayah menjadi zona Ringan, Sedang, hingga Kritis secara otomatis.
+        </p>
+
+        <div className="pt-4">
+          <Link href="/dashboard" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg shadow-blue-200 transition-all hover:scale-105">
+            Mulai Analisis Data <ArrowRight size={20} />
+          </Link>
+        </div>
+      </div>
+
+      {/* Features Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-6xl w-full">
+        <FeatureCard 
+          icon={<Map className="text-blue-500" size={32} />}
+          title="Pemetaan Wilayah"
+          desc="Mengelompokkan kelurahan berdasarkan pola penyebaran kasus positif dan mortalitas."
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+        <FeatureCard 
+          icon={<BarChart3 className="text-purple-500" size={32} />}
+          title="Analisis Visual"
+          desc="Visualisasi data interaktif dengan grafik tren bulanan dan scatter plot hasil reduksi dimensi."
+        />
+        <FeatureCard 
+          icon={<ClockArrowUpIcon className="text-green-500" size={32} />}
+          title="Prediksi Kasus"
+          desc="Melakukan prediksi kasus DBD dengan periode 3/6/12 bulan kedepan."
+        />
+      </div>
+    </div>
+  );
+}
+
+function FeatureCard({ icon, title, desc }) {
+  return (
+    <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+      <div className="mb-4 bg-slate-50 w-fit p-3 rounded-xl">{icon}</div>
+      <h3 className="text-xl font-bold text-slate-800 mb-2">{title}</h3>
+      <p className="text-slate-500 leading-relaxed">{desc}</p>
     </div>
   );
 }
