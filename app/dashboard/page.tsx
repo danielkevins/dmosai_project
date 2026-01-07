@@ -291,7 +291,8 @@ export default function DashboardPage() {
                         innerRadius={50}
                         dataKey="value" 
                         paddingAngle={3}
-                        label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                        // PERBAIKAN DI SINI: Tambahkan ': any' agar TypeScript tidak protes
+                        label={({ name, percent }: any) => `${name} ${(percent * 100).toFixed(0)}%`}
                       >
                         {metrics.pieData.map((entry: any, index: number) => (
                           <Cell key={`cell-${index}`} fill={SEVERITY_COLORS[entry.name] || "#94a3b8"} stroke="none"/>
