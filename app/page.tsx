@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 import { ShieldCheck, BarChart3, Map, ArrowRight, ArrowBigRight, ArrowUpRight, ArrowUpCircle, ArrowUpDown, ArrowUpFromDot, ArrowUpRightSquare, ClockArrowUpIcon } from "lucide-react";
 
 export default function LandingPage() {
@@ -13,7 +12,7 @@ export default function LandingPage() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
           </span>
-          Sistem Informasi Cerdas 2025
+          Sistem Informasi Cerdas 2026
         </div>
         
         <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight">
@@ -22,7 +21,7 @@ export default function LandingPage() {
         
         <p className="text-lg text-slate-600 leading-relaxed">
           Pantau penyebaran Demam Berdarah Dengue (DBD) di Semarang menggunakan algoritma 
-          <strong> DBSCAN</strong>. Kelompokkan wilayah menjadi zona Ringan, Sedang, hingga Kritis secara otomatis.
+          <strong> K-Means Clustering</strong>. Kelompokkan wilayah menjadi zona Ringan, Sedang, hingga Kritis secara otomatis.
         </p>
 
         <div className="pt-4">
@@ -42,7 +41,7 @@ export default function LandingPage() {
         <FeatureCard 
           icon={<BarChart3 className="text-purple-500" size={32} />}
           title="Analisis Visual"
-          desc="Visualisasi data interaktif dengan grafik tren bulanan dan scatter plot hasil reduksi dimensi."
+          desc="Visualisasi data interaktif dengan grafik tren bulanan dan peta persebaran kasus."
         />
         <FeatureCard 
           icon={<ClockArrowUpIcon className="text-green-500" size={32} />}
@@ -54,7 +53,7 @@ export default function LandingPage() {
   );
 }
 
-function FeatureCard({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
+function FeatureCard({ icon, title, desc }) {
   return (
     <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
       <div className="mb-4 bg-slate-50 w-fit p-3 rounded-xl">{icon}</div>

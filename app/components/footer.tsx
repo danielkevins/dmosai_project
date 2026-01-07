@@ -26,7 +26,12 @@ export default function Footer() {
             
             <div className="pt-2">
                 <p className="text-xs text-slate-500 mb-2">Dikembangkan oleh:</p>
-                <p className="text-sm font-semibold text-white">Tim Pengembang SIC (UDINUS)</p>
+                <p className="text-sm font-semibold text-white">Kelompok 4 SIC (UDINUS)</p>
+            </div>
+
+            <div className="pt-2">
+                <p className="text-xs text-slate-500 mb-2">Sumber Data:</p>
+                <p className="text-sm font-semibold text-white">Tunggal Dara</p>
             </div>
 
             {/* Social Icons */}
@@ -75,7 +80,6 @@ export default function Footer() {
               <li><Link href="/" className="hover:text-blue-500 transition-colors">Beranda Utama</Link></li>
               <li><Link href="/dashboard" className="hover:text-blue-500 transition-colors">Dashboard Analisis</Link></li>
               <li><Link href="/prediksi" className="hover:text-blue-500 transition-colors">Prediksi Kasus DBD</Link></li>
-              <li><Link href="#" className="hover:text-blue-500 transition-colors">Tentang Kami</Link></li>
             </ul>
           </div>
 
@@ -87,9 +91,8 @@ export default function Footer() {
             </p>
             
             <ul className="space-y-3 text-sm">
-              <TechItem icon={<Network size={16} />} text="DBSCAN Clustering" />
+              <TechItem icon={<Network size={16} />} text="K-Means Clustering" />
               <TechItem icon={<Code2 size={16} />} text="SARIMA" />
-              <TechItem icon={<Activity size={16} />} text="Next.js & Recharts" />
             </ul>
           </div>
 
@@ -97,7 +100,7 @@ export default function Footer() {
 
         {/* COPYRIGHT BAR */}
         <div className="border-t border-slate-800 pt-8 mt-8 text-center md:text-right text-xs text-slate-500">
-          <p>&copy; 2025 Universitas Dian Nuswantoro (UDINUS). All rights reserved.</p>
+          <p>&copy; 2026 Universitas Dian Nuswantoro (UDINUS). All rights reserved.</p>
           <p className="mt-1">D-MOSAI: Dengue Monitoring System with Artificial Intelligence.</p>
         </div>
       </div>
