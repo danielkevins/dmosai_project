@@ -269,10 +269,7 @@ export default function DataPage() {
                            <span className="text-slate-500">Kelurahan</span>
                            <span className="font-bold text-slate-900 text-right">{selectedData.wilayah}</span>
                         </div>
-                        <div className="flex justify-between border-b border-dashed border-slate-100 pb-2">
-                           <span className="text-slate-500">Kecamatan</span>
-                           <span className="font-medium text-slate-700 text-right">Semarang</span>
-                        </div>
+                        
                      </div>
                   </div>
 
