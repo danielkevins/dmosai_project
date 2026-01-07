@@ -53,12 +53,21 @@ export default function LandingPage() {
   );
 }
 
-function FeatureCard({ icon, title, desc }) {
+interface FeatureCardProps {
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+}
+
+// 2. Pasang tipe data tersebut di fungsi
+function FeatureCard({ icon, title, desc }: FeatureCardProps) {
   return (
     <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-      <div className="mb-4 bg-slate-50 w-fit p-3 rounded-xl">{icon}</div>
-      <h3 className="text-xl font-bold text-slate-800 mb-2">{title}</h3>
-      <p className="text-slate-500 leading-relaxed">{desc}</p>
+      <div className="mb-4 bg-slate-50 w-fit p-3 rounded-xl text-blue-600">
+        {icon}
+      </div>
+      <h3 className="text-lg font-bold text-slate-800 mb-2">{title}</h3>
+      <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
     </div>
   );
 }
