@@ -142,6 +142,8 @@ export default function DataPage() {
             onChange={(e) => setYear(e.target.value)}
             className="w-full md:w-auto px-4 py-2.5 border border-slate-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-700 font-medium cursor-pointer hover:bg-slate-50 transition-colors"
           >
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
             <option value="2020">2020</option>
             <option value="2021">2021</option>
             <option value="2022">2022</option>

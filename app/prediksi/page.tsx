@@ -52,7 +52,6 @@ export default function PredictionPage() {
             <option value="3">3 Bulan (Jangka Pendek)</option>
             <option value="6">6 Bulan (Semester)</option>
             <option value="12">1 Tahun (Jangka Panjang)</option>
-            <option value="24">2 Tahun (Lanjutan)</option>
           </select>
         </div>
       </div>

@@ -1,4 +1,5 @@
-import { Activity, MapPin, Phone, Mail, Facebook, Instagram, Twitter, Github, Cpu, Network, Database, Code2 } from "lucide-react";
+import { Activity, MapPin, Phone, Mail, Facebook, Instagram, Twitter, Github, Cpu, Network, Database, Code2, CodeIcon, CodeSquareIcon } from "lucide-react";
+import App from "next/app";
 import Link from "next/link";
 
 export default function Footer() {
@@ -34,13 +35,7 @@ export default function Footer() {
                 <p className="text-sm font-semibold text-white">Tunggal Dara</p>
             </div>
 
-            {/* Social Icons */}
-            <div className="flex gap-4 pt-2">
-              <SocialIcon icon={<Facebook size={18} />} />
-              <SocialIcon icon={<Instagram size={18} />} />
-              <SocialIcon icon={<Twitter size={18} />} />
-              <SocialIcon icon={<Github size={18} />} />
-            </div>
+            
           </div>
 
           {/* KOLOM 2: KONTAK & ALAMAT */}
@@ -93,6 +88,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <TechItem icon={<Network size={16} />} text="K-Means Clustering" />
               <TechItem icon={<Code2 size={16} />} text="SARIMA" />
+              <TechItem icon={<CodeSquareIcon size={16} />} text="Google Gemini" />
             </ul>
           </div>
 

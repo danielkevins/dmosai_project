@@ -4,8 +4,8 @@ import Footer from "./components/footer"; // Import Footer
 import React from "react";
 
 export const metadata = {
-  title: "SIC Clustering DBD",
-  description: "Sistem Informasi Cerdas Pemetaan Wilayah DBD",
+  title: "D-MOSAI App",
+  description: "Sistem Informasi Cerdas untuk Monitoring dan Prediksi Kasus DBD Kota Semarang",
 };
 
 export default function RootLayout({

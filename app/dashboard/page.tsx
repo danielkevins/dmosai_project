@@ -161,14 +161,15 @@ export default function DashboardPage() {
                 onChange={(e) => setYear(e.target.value)}
                 className="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 pr-8 font-medium cursor-pointer transition hover:bg-slate-100"
               >
-
-
-                <option value="2020">2020 (Lengkap)</option>
-                <option value="2021">2021 (Lengkap)</option>
-                <option value="2022">2022 (Lengkap)</option>
-                <option value="2023">2023 (Lengkap)</option>
-                <option value="2024">2024 (Lengkap)</option>
-                <option value="2025">2025 (Lengkap)</option>
+                <option value="2018">2018</option>
+                
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
                 <ChevronDown size={16} />

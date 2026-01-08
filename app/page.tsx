@@ -16,12 +16,13 @@ export default function LandingPage() {
         </div>
         
         <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight">
-          Dashboard Sebaran Kasus DBD <span className="text-blue-600">Kota Semarang</span>
+          Dashboard Analisis Sebaran dan Prediksi Kasus DBD <span className="text-blue-600">Kota Semarang</span>
         </h1>
         
         <p className="text-lg text-slate-600 leading-relaxed">
-          Pantau penyebaran Demam Berdarah Dengue (DBD) di Semarang menggunakan algoritma 
-          <strong> K-Means Clustering</strong>. Kelompokkan wilayah menjadi zona Ringan, Sedang, hingga Kritis secara otomatis.
+          Sistem ini menyajikan visualisasi sebaran kasus DBD tingkat kelurahan di Kota Semarang dengan 
+          pendekatan 
+          <strong> Analisis Data dan Machine Learning</strong>. Metode clustering digunakan untuk mengelompokkan wilayah ke dalam tingkat risiko rendah, sedang, hingga tinggi, serta dilengkapi dengan fitur prediksi kasus untuk mendukung pengambilan keputusan dan kewaspadaan dini.
         </p>
 
         <div className="pt-4">
@@ -36,17 +37,17 @@ export default function LandingPage() {
         <FeatureCard 
           icon={<Map className="text-blue-500" size={32} />}
           title="Pemetaan Wilayah"
-          desc="Mengelompokkan kelurahan berdasarkan pola penyebaran kasus positif dan mortalitas."
+          desc="Mengelompokkan kelurahan di Kota Semarang berdasarkan tingkat risiko DBD menggunakan analisis clustering dari data kasus positif dan angka kematian."
         />
         <FeatureCard 
           icon={<BarChart3 className="text-purple-500" size={32} />}
           title="Analisis Visual"
-          desc="Visualisasi data interaktif dengan grafik tren bulanan dan peta persebaran kasus."
+          desc="Menyajikan visualisasi data interaktif berupa grafik tren kasus bulanan dan peta sebaran DBD untuk mendukung analisis pola kejadian."
         />
         <FeatureCard 
           icon={<ClockArrowUpIcon className="text-green-500" size={32} />}
           title="Prediksi Kasus"
-          desc="Melakukan prediksi kasus DBD dengan periode 3/6/12 bulan kedepan."
+          desc="Melakukan prediksi jumlah kasus DBD untuk periode 3, 6, dan 12 bulan ke depan sebagai dasar perencanaan dan kewaspadaan dini."
         />
       </div>
     </div>
