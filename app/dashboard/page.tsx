@@ -265,14 +265,22 @@ export default function DashboardPage() {
                   </div>
               </div>
 
-              {/* Komponen Peta (Gunakan Key untuk refresh saat ganti tahun) */}
+              {/* Komponen Peta */}
               <div className="h-[500px] w-full rounded-xl overflow-hidden border border-slate-200 relative z-0">
-                  <MapSemarang key={year} dataClustering={data.clustering_result} />
+                  {/* UPDATE BAGIAN INI: */}
+                  {/* 1. key={year} : Memaksa map refresh total saat ganti tahun */}
+                  {/* 2. onAreaClick : Fungsi untuk membuka modal popup */}
+                  <MapSemarang 
+                      key={year} 
+                      dataClustering={data.clustering_result} 
+                      onAreaClick={(clickedData) => setSelectedData(clickedData)}
+                  />
               </div>
               <p className="text-xs text-slate-400 mt-3 text-center italic">
                 *Warna wilayah dikelompokkan secara otomatis menggunakan algoritma K-Means.
               </p>
           </div>
+          
 
           {/* Chart Row */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
